@@ -10,7 +10,7 @@ from config import (
     BOT_NAME,
     BOT_USERNAME,
     SUPPORT_GROUP,
-    UPDATES_CHANNEL,
+    PLAYLIST_NAME,
     START_IMAGE, 
     OWNER_ID,
 )
@@ -41,7 +41,7 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "🎧 Müzik Kanalı", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "🎧 Müzik Kanalı", url=f"https://t.me/{PLAYLIST_NAME}"
                     ),
                     InlineKeyboardButton(
                         "💬 Support", url=f"https://t.me/{SUPPORT_GROUP}"
@@ -165,7 +165,7 @@ async def cbstart(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "🎧 Müzik Kanalı", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "🎧 Müzik Kanalı", url=f"https://t.me/{PLAYLIST_NAME}"
                     ),
                     InlineKeyboardButton(
                         "💬 Support", url=f"https://t.me/{SUPPORT_GROUP}"
