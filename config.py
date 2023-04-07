@@ -22,4 +22,5 @@ PLAYLIST_ID = int(getenv("PLAYLIST_ID"))
 
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
 
-OWNER_ID = list(map(int, getenv("OWNER_ID").split()))
+OWNER_ID = list(
+    map(int, getenv("OWNER_ID", "").split())
