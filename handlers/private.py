@@ -55,7 +55,7 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👤 Owner", user_id=SUDO_USERS"
+                        "👤 Owner", user_id=SUDO_USERS
                     )
                 ]
                 
@@ -179,7 +179,7 @@ async def cbstart(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👤 Owner", user_id=SUDO_USERS"
+                        "👤 Owner", user_id=SUDO_USERS
                     )
                 ]
                 
