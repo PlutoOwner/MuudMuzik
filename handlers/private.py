@@ -149,7 +149,7 @@ async def admin(_, query: CallbackQuery):
 async def ghelp(_, message: Message):
     await message.reply_text(
         f"""**Merhaba şuan aktif olarak çalışmaktayım yardım için aşağıda buttonu kullanınız!**""",
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📚 Yardım", url=f"https://t.me/{BOT_USERNAME}?start")]])
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📚 Yardım", url=f"https://t.me/{BOT_USERNAME}?start=help")]])
     )
 
 
