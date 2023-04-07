@@ -11,6 +11,7 @@ from config import (
     BOT_USERNAME,
     SUPPORT_GROUP,
     UPDATES_CHANNEL,
+    START_IMAGE, 
     OWNER_ID,
 )
 from helpers.filters import command, other_filters2
