@@ -7,46 +7,15 @@ from time import time
 from datetime import datetime
 
 from config import (
-    ALIVE_IMG,
-    ALIVE_NAME,
     BOT_NAME,
     BOT_USERNAME,
     SUPPORT_GROUP,
-    OWNER_NAME,
     UPDATES_CHANNEL,
-    ASSISTANT_NAME,
+    OWNER_ID,
 )
 from helpers.filters import command, other_filters2
 #  
 
-
-__major__ = 0
-__minor__ = 2
-__micro__ = 1
-
-__python_version__ = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
-
-
-START_TIME = datetime.utcnow()
-START_TIME_ISO = START_TIME.replace(microsecond=0).isoformat()
-TIME_DURATION_UNITS = (
-    ("week", 60 * 60 * 24 * 7),
-    ("day", 60 * 60 * 24),
-    ("hour", 60 * 60),
-    ("min", 60),
-    ("sec", 1),
-)
-
-
-async def _human_time_duration(seconds):
-    if seconds == 0:
-        return "inf"
-    parts = []
-    for unit, div in TIME_DURATION_UNITS:
-        amount, seconds = divmod(int(seconds), div)
-        if amount > 0:
-            parts.append("{} {}{}".format(amount, unit, "" if amount == 1 else "s"))
-    return ", ".join(parts)
 
 
 
@@ -66,13 +35,12 @@ async def start_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕  Grubuna Ekle  ➕", 
-                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                        "📚 Komutlar" , callback_data= "cbhelp"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🎙 Asistan", url=f"https://t.me/{ASSISTANT_NAME}"
+                        "🎧 Müzik Kanalı", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                     InlineKeyboardButton(
                         "💬 Support", url=f"https://t.me/{SUPPORT_GROUP}"
@@ -80,10 +48,13 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 Komutlar" , callback_data= "cbhelp"
-                    ),
+                        "✚ Beni Gruba Ekle",
+                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                    )
+                ],
+                [
                     InlineKeyboardButton(
-                        "📣 Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "👤 Owner", user_id=OWNER_ID"
                     )
                 ]
                 
@@ -106,17 +77,14 @@ async def bilgi(_, message: Message):
              [
                  [
                      InlineKeyboardButton(
-                         "🔓 Üye komutları", callback_data="herkes"), 
+                         "🙎‍♂ Üye komutları", callback_data="herkes"), 
 
                      InlineKeyboardButton(
-                         "🔐 Admin komutları", callback_data="admin")
+                         "👮 Admin komutları", callback_data="admin")
                  ],[
                      InlineKeyboardButton(
-                         "Ana menü🏠", callback_data="cbstart")
-                 ],[
-                     InlineKeyboardButton(
-                         "🪐 Geliştirici", url=f"https://t.me/{OWNER_NAME}")
-                 ]
+                         "🏠 Ana Menü", callback_data="cbstart")
+                 ],
              ]
          )
     )
@@ -131,19 +99,15 @@ async def cbbilgi(_, query: CallbackQuery):
       [
         [
           InlineKeyboardButton(
-            "🔓 Üye Komutları", callback_data ="herkes"), 
+            "🙎‍♂ Üye Komutları", callback_data ="herkes"), 
           
           InlineKeyboardButton(
-            "🔐 Admin Komutları",callback_data ="admin")
+            "👮 Admin Komutları",callback_data ="admin")
         ],
         [
           InlineKeyboardButton(
-            "🏠Ana Menü", callback_data="cbstart")
-        ],
-        [
-          InlineKeyboardButton(
-            "🪐 Geliştirici", url=f"https://t.me/{OWNER_NAME}")
-        ]
+            "🏠 Ana Menü", callback_data="cbstart")
+        ], 
       ]
      ))
 
@@ -153,10 +117,6 @@ async def herkes(_, query: CallbackQuery):
     await query.edit_message_text(f"""<b>Selam {query.from_user.mention}!\nBu botun herkes için komut menüsü 😉\n\n ▶️ /oynat - şarkı çalmak için youtube url'sine veya şarkı dosyasına yanıt verme\n ▶️ /oynat <song name> - istediğiniz şarkıyı çal\n 🔴 \n 🎵 /bul <song name> - istediğiniz şarkıları hızlı bir şekilde bulun\n 🎵 /vbul istediğiniz videoları hızlı bir şekilde bulun\n 🔍 /ara <query> - youtube'da ayrıntıları içeren videoları arama\n 🏓/ping bot ping durumunu kontrol eder\n\n</b>""",
     reply_markup=InlineKeyboardMarkup(
              [
-                 [
-                     InlineKeyboardButton(
-                         "🪐 Geliştirici", url=f"https://t.me/{OWNER_NAME}")
-                 ],
                  [
                      InlineKeyboardButton(
                          "⬅️ Geri", callback_data="cbhelp")
@@ -171,10 +131,6 @@ async def admin(_, query: CallbackQuery):
     await query.edit_message_text(f"""<b>Selam {query.from_user.mention}!\nBu botun adminler için komut menüsü 🤩\n\n ▶️ /devam - şarkı çalmaya devam et\n ⏸️ /durdur - çalan parçayı duraklatmak için\n 🔄 /atla- Sıraya alınmış müzik parçasını atlatır.\n ⏹ /son - müzik çalmayı durdurma\n 🔼 /ver botun sadece yönetici için kullanılabilir olan komutlarını kullanabilmesi için kullanıcıya yetki ver\n 🔽 /al botun yönetici komutlarını kullanabilen kullanıcının yetkisini al\n\n ⚪ /asistan - Müzik asistanı grubunuza katılır.\n\n</b>""",
     reply_markup=InlineKeyboardMarkup(
              [
-                 [
-                     InlineKeyboardButton(
-                         "🪐 Geliştirici", url=f"https://t.me/{OWNER_NAME}")
-                 ],
                  [
                      InlineKeyboardButton(
                          "⬅️ Geri", callback_data="cbhelp")
@@ -192,7 +148,7 @@ async def admin(_, query: CallbackQuery):
 async def ghelp(_, message: Message):
     await message.reply_text(
         f"""**Merhaba şuan aktif olarak çalışmaktayım yardım için aşağıda buttonu kullanınız!**""",
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📝 Yardım", url=f"https://t.me/{BOT_USERNAME}?start")]])
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("📚 Yardım", url=f"https://t.me/{BOT_USERNAME}?start")]])
     )
 
 
@@ -203,13 +159,12 @@ async def cbstart(_, query: CallbackQuery):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Grubuna Ekle ➕",
-                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                        "📚 Komutlar" , callback_data= "cbhelp"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        "🎙 Asistan", url=f"https://t.me/{ASSISTANT_NAME}"
+                        "🎧 Müzik Kanalı", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                     InlineKeyboardButton(
                         "💬 Support", url=f"https://t.me/{SUPPORT_GROUP}"
@@ -217,45 +172,20 @@ async def cbstart(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "📚 Komutlar" , callback_data= "cbhelp"
-                    ),
+                        "✚ Beni Gruba Ekle",
+                        url=f"https://t.me/{BOT_USERNAME}?startgroup=true"
+                    )
+                ],
+                [
                     InlineKeyboardButton(
-                        "📣 Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "👤 Owner", user_id=OWNER_ID"
                     )
                 ]
                 
            ]
-        ),
-    )
+        ), 
+    ) 
 
-@Client.on_message(
-    command(["alive", f"alive@{BOT_USERNAME}"]) & filters.group & ~filters.edited
-)
-async def alive(c: Client, message: Message):
-    chat_id = message.chat.id
-    current_time = datetime.utcnow()
-    uptime_sec = (current_time - START_TIME).total_seconds()
-    uptime = await _human_time_duration(int(uptime_sec))
-
-    keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton("📣 ᴅᴇsᴛᴇᴋ", url=f"https://t.me/{SUPPORT_GROUP}"),
-                InlineKeyboardButton(
-                    "🗯️ ʙɪʟɢɪ", url=f"https://t.me/{UPDATES_CHANNEL}"
-                ),
-            ]
-        ]
-    )
-
-    alive = f"**• ᴍᴇʀʜᴀʙᴀ {message.from_user.mention()} {BOT_NAME}**\n\n🧑🏼‍💻 sᴀʜɪʙɪᴍ: [{ALIVE_NAME}](https://t.me/{OWNER_NAME})\n👾 ʙᴏᴛ ᴠᴇʀsɪᴏɴ: `v{__version__}`\n🔥 ᴘʀᴏɢʀᴀᴍ ᴠᴇʀsɪᴏɴ: `{pyrover}`\n🐍 ᴘʏᴛʜᴏɴ ᴠᴇʀsɪᴏɴ: `{__python_version__}`\n✨ PʏTɢCᴀʟʟs ᴠᴇʀsɪᴏɴ: `{pytover.__version__}`\n🆙 ᴄᴀʟɪsᴍᴀ ᴅᴜʀᴜᴍᴜ: `{uptime}`\n\n❤ **Bᴇɴɪ ɢʀᴜʙᴀ ᴀʟᴅɪɢɪɴɪᴢ ɪᴄɪɴ ᴛᴇsᴇᴋᴋᴜʀʟᴇʀ . . !**"
-
-    await c.send_photo(
-        chat_id,
-        photo=f"{ALIVE_IMG}",
-        caption=alive,
-        reply_markup=keyboard,
-    )
 
 
 
