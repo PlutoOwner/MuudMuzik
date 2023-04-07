@@ -24,9 +24,9 @@ from helpers.filters import command, other_filters2
     command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 async def start_(client: Client, message: Message):
-    await message.reply_sticker("CAACAgQAAxkBAAI8bmKIvgnlJyCrq9HIxSvCZCbm5CEjAAIaEAACpvFxHg-Z648-SCRWJAQ")
-    await message.reply_text(
-        f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\n
+    await message.reply_photo(
+                f"{START_IMAGE}",
+                caption=f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\n
 ● **Sesli sohbetlerde müzik çalabilen botum.**
 
 ● **Ban yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**
