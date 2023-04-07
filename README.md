@@ -33,8 +33,7 @@
 
 #### Railway Deploy
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/OU-JLn?referralCode=WGQSLA)
-
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/2MG5h0?referralCode=gEVFNk)
 Get pyrogram (p)  `SESSION` buradan:
 <p align="center">STRING SESSION</p>
 
