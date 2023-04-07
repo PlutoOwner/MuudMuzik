@@ -32,7 +32,7 @@
 - `/ayril` - Müzik asistanı grubunuzu terk eder. 
 
 #### Railway Deploy
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/WJ66C1)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/BdcL6W?referralCode=WGQSLA)
 
 Get pyrogram (p)  `SESSION` buradan:
 <p align="center">STRING SESSION</p>
