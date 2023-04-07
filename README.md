@@ -32,15 +32,11 @@
 - `/ayril` - Müzik asistanı grubunuzu terk eder. 
 
 
-<h4>🔺 Herokuya Dağıt 🔻</h4>
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amahocam/muudmusic)
 
 Get pyrogram (p)  `SESSION` buradan:
 
 [![Run on Repl.it](https://repl.it/badge/github/Makoto-XD/Session-Generator)](https://replit.com/@Makoto-XD/Session-Generator)
 
 #### Düzen tasarım
-- [#Ge͂̂͝c̨͒ͤ̕͜e̡͝ k̶̴̛ͮ͌̒̃͟͡uş̟̲͎u̼͓̭̝ͦ̂͋̈̋̔](https://t.me/mutsuz_panda)
-
-- İnstagram [@ama_hocaam](https://instagram.com/ama_hocaam?igshid=YmMyMTA2M2Y=)
+[![Instagram Badge](https://img.shields.io/badge/-Instagram-000?style=quare&labelColor=000&logo=Instagram&logoColor=white&link=https://instagram.com/ama_hocaam?igshid=YmMyMTA2M2Y=)](https://instagram.com/ama_hocaam?igshid=YmMyMTA2M2Y=)
+[![Telegram Badge](https://img.shields.io/badge/-Telegram-blue?style=flat-quare&labelColor=dark_blue&logo=Telegram&logoColor=dark_blue&link=t.me/PlutoOwner)](https://t.me/PlutoOwner)
