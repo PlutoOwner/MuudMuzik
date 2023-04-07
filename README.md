@@ -37,7 +37,7 @@
 
 Get pyrogram (p)  `SESSION` buradan:
 
-[![Run on Repl.it](https://repl.it/badge/github/Makoto-XD/Session-Generator)](https://replit.com/@Makoto-XD/Session-Generator)
+[![Run on Repl.it](https://replit.com/@Itz-zaid/Generator)](https://replit.com/@Itz-zaid/Generator)
 
 #### Düzen tasarım
 [![Instagram Badge](https://img.shields.io/badge/-Instagram-000?style=quare&labelColor=000&logo=Instagram&logoColor=white&link=https://instagram.com/ama_hocaam?igshid=YmMyMTA2M2Y=)](https://instagram.com/ama_hocaam?igshid=YmMyMTA2M2Y=)
