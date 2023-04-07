@@ -18,7 +18,6 @@ ujson
 pymongo[srv]
 psutil
 motor
-speedtest-cli
-lyricsgenius
-yt_dlp
-yt-dlp
+git+https://github.com/PlutoOwner/Loading2@master
+git+https://github.com/alexmercerind/youtube-search-python@main
+git+https://github.com/PlutoOwner/update@master
