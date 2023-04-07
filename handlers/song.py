@@ -1,75 +1,66 @@
-import os
-import requests
-import aiohttp
-import yt_dlp
 import wget
+import os, youtube_dl, requests, time
 
-from pyrogram import Client, filters
+from main import bot
 from youtube_search import YoutubeSearch
+import lyricsgenius
+from pyrogram.handlers import MessageHandler
+from pyrogram import Client, filters
+import yt_dlp
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery 
 from yt_dlp import YoutubeDL
+from config import BOT_USERNAME, UPDATES_CHANNEL, PLAYLIST_ID
 
-from config import BOT_USERNAME
-from helpers.filters import command
+ydl_opts = {
+    'format': 'best',
+    'keepvideo': True,
+    'prefer_ffmpeg': False,
+    'geo_bypass': True,
+    'outtmpl': '%(title)s.%(ext)s',
+    'quite': True
+}
 
 
-def time_to_seconds(time):
-    stringt = str(time)
-    return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
+  
+#music indirme#
 
-
-@Client.on_message(command(["bul"]))
-def bul(client, message):
-
-    user_id = message.from_user.id
-    user_name = message.from_user.first_name
-    rpk = "[" + user_name + "](tg://user?id=" + str(user_id) + ")"
-
-    query = "".join(" " + str(i) for i in message.command[1:])
-    print(query)
-    m = message.reply("🔎 Arıyorum...")
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+@bot.on_message(filters.command("bul") & ~filters.edited)
+async def bul(_, message):
+    query = " ".join(message.command[1:])
+    m = await message.reply("<b>Şarkınız Aranıyor ... 🔍</b>")
+    ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
-        results = YoutubeSearch(query, max_results=5).to_dict()
+        results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
-        # print(results)
         title = results[0]["title"][:40]
         thumbnail = results[0]["thumbnails"][0]
-        thumb_name = f"thumb{title}.jpg"
+        thumb_name = f"{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
         open(thumb_name, "wb").write(thumb.content)
-
         duration = results[0]["duration"]
-        url_suffix = results[0]["url_suffix"]
-        views = results[0]["views"]
 
     except Exception as e:
-        m.edit(
-            "❌ Hiçbir şey bulamadım. Pardon.\n\nBaşka bir anahtar kelime deneyin veya belki düzgün hecele."
-        )
+        await m.edit("<b>❌ Üzgünüm şarkı bulunamadı.\n\n Lütfen başka şarkı ismi söyleyin.</b>")
         print(str(e))
         return
-    m.edit("`Şarkı indiriliyor, lütfen bekleyin...⏱`")
+    await m.edit("<b>📥 İndirme İşlemi Başladı...</b>")
     try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        with yt_dlp.YoutubeDL(ydl_ops) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f"☑️ **İsmi**: [{title[:35]}]({link})\n🎬 **Kaynak**: YouTube\n⏱️ **Süre**: `{duration}`\n👁‍🗨 **Görünümler**: `{views}`\n📤 **Tarafından**: @{BOT_USERNAME}"
+        rep = f"**00:00 ━━━●───── {duration}\n⇆ㅤ◁ㅤ❚❚ㅤ▷**"
+        res = f"**00:00━━━●───── {duration}\n⇆ㅤ◁ㅤ❚❚ㅤ▷\n\n💡 Bot @{BOT_USERNAME}\n\n@{UPDATES_CHANNEL} ❤️‍🩹**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
-            dur += int(dur_arr[i]) * secmul
+            dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
-        message.reply_audio(
-            audio_file,
-            caption=rep,
-            thumb=thumb_name,
-            parse_mode="md",
-            title=title,
-            duration=dur,
-        )
-        m.delete()
+        await m.edit("📤 Yükleniyor..")
+        await message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@PlutoFm", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎧 𝐌𝐮̈𝐳𝐢𝐤 𝐊𝐚𝐧𝐚𝐥ı", url=f"https://t.me/{UPDATES_CHANNEL}")]]))
+        await m.delete()
+        await bot.send_audio(chat_id=PLAYLIST_ID, audio=audio_file, caption=res, performer="@PlutoFm", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
-        m.edit("❌ Error")
+        await m.edit("<b>❌ Hatanın, düzelmesini bekleyiniz.</b>")
         print(e)
 
     try:
@@ -78,7 +69,8 @@ def bul(client, message):
     except Exception as e:
         print(e)
 
-@Client.on_message(
+
+@bot.on_message(
     command(["vbul", "vsong"]) & ~filters.edited
 )
 async def vsong(client, message):
