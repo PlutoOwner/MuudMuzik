@@ -13,7 +13,7 @@ import youtube_dl
 from youtube_search import YoutubeSearch
 import converter
 from downloaders import youtube
-from config import DURATION_LIMIT, UPDATES_CHANNEL, BOT_USERNAME, THUMB_IMG, ASSISTANT_NAME 
+from config import DURATION_LIMIT, PLAYLIST_NAME, BOT_USERNAME, THUMB_IMG, ASSISTANT_NAME 
 from helpers.filters import command
 from helpers.decorators import errors
 from helpers.errors import DurationLimitError
@@ -199,7 +199,7 @@ async def play(_, message: Message):
         [
             [
                 InlineKeyboardButton("📚 Bilgi", url=f"https://t.me/{BOT_USERNAME}?start=help"),
-                InlineKeyboardButton("📣 Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                InlineKeyboardButton("🎧 𝐌𝐮̈𝐳𝐢𝐤 𝐊𝐚𝐧𝐚𝐥ı", url=f"https://t.me/{PLAYLIST_NAME}"),
             ],[
                 InlineKeyboardButton("🗑 Kapat", callback_data="cls"),
             ],
@@ -264,7 +264,7 @@ async def play(_, message: Message):
         [
             [
                 InlineKeyboardButton("📚 Bilgi", url=f"https://t.me/{BOT_USERNAME}?start=help"),
-                InlineKeyboardButton("📣 Kanal", url=f"https://t.me/{UPDATES_CHANNEL}"),
+                InlineKeyboardButton("🎧 𝐌𝐮̈𝐳𝐢𝐤 𝐊𝐚𝐧𝐚𝐥ı", url=f"https://t.me/{PLAYLIST_NAME}"),
             ],[
                 InlineKeyboardButton("🗑 Kapat", callback_data="cls"),
             ],
