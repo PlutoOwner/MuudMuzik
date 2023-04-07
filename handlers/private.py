@@ -12,7 +12,7 @@ from config import (
     SUPPORT_GROUP,
     PLAYLIST_NAME,
     START_IMAGE, 
-    OWNER_ID,
+    SUDO_USERS,
 )
 from helpers.filters import command, other_filters2
 #  
@@ -55,7 +55,7 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👤 Owner", user_id=OWNER_ID"
+                        "👤 Owner", user_id=SUDO_USERS"
                     )
                 ]
                 
@@ -179,7 +179,7 @@ async def cbstart(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👤 Owner", user_id=OWNER_ID"
+                        "👤 Owner", user_id=SUDO_USERS"
                     )
                 ]
                 
