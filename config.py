@@ -18,7 +18,7 @@ PLAYLIST_NAME = getenv("PLAYLIST_NAME", "PlutoFm")
 ASSISTANT_NAME = getenv("ASSISTANT_NAME")
 PMPERMIT = getenv("PMPERMIT", "ENABLE")
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "15"))
-PLAYLIST_ID = int(os.environ.get("PLAYLIST_ID"))
+PLAYLIST_ID = int(getenv("PLAYLIST_ID"))
 
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
 
