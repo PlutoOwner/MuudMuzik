@@ -9,7 +9,7 @@ from pyrogram import Client, filters
 import yt_dlp
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery 
 from yt_dlp import YoutubeDL
-from config import BOT_USERNAME, UPDATES_CHANNEL, PLAYLIST_ID
+from config import BOT_USERNAME, PLAYLIST_NAME, PLAYLIST_ID
 
 ydl_opts = {
     'format': 'best',
@@ -56,7 +56,7 @@ async def bul(_, message):
             dur += int(float(dur_arr[i])) * secmul
             secmul *= 60
         await m.edit("📤 Yükleniyor..")
-        await message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@PlutoFm", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎧 𝐌𝐮̈𝐳𝐢𝐤 𝐊𝐚𝐧𝐚𝐥ı", url=f"https://t.me/{UPDATES_CHANNEL}")]]))
+        await message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@PlutoFm", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎧 𝐌𝐮̈𝐳𝐢𝐤 𝐊𝐚𝐧𝐚𝐥ı", url=f"https://t.me/{PLAYLIST_NAME}")]]))
         await m.delete()
         await bot.send_audio(chat_id=PLAYLIST_ID, audio=audio_file, caption=res, performer="@PlutoFm", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
