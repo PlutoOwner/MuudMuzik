@@ -92,7 +92,7 @@ async def generate_cover(requested_by, title, views, duration, thumbnail):
 async def cls(_, query: CallbackQuery):
     await query.message.delete()
 
-# EfsaneMusicVaves düzenlenmiştir.
+
 
 @Client.on_message(command(["play", "oynat"]) 
                    & filters.group
