@@ -14,9 +14,7 @@ from config import (
 
 @Client.on_message(filters.private & filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
 async def start(_, message: Message):
-                await message.reply_photo(
-                "https://graph.org/file/fa5ccd7123f36f9e12592.jpg",
-                caption=(f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\nSesli sohbetlerde müzik çalabilen botum.\n\nBan yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**"""),
+      await message.reply_text(f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\nSesli sohbetlerde müzik çalabilen botum.\n\nBan yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**"""),
          reply_markup=InlineKeyboardMarkup(
             [
                 [
