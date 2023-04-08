@@ -15,24 +15,15 @@ from config import (
     SUDO_USERS,
 )
 from helpers.filters import command, other_filters2
-#  
 
 
 
-
-
-@Client.on_message(
-    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
-)
-async def start_(client: Client, message: Message):
-    await message.reply_photo(
+@Client.on_message(filters.private & filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
+async def start(_, message: Message):
+                await message.reply_photo(
                 f"{START_IMAGE}",
-                caption=f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\n
-● **Sesli sohbetlerde müzik çalabilen botum.**
-
-● **Ban yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**
-""",
-        reply_markup=InlineKeyboardMarkup(
+                caption=(f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\nSesli sohbetlerde müzik çalabilen botum.\n\nBan yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**"""),
+         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
