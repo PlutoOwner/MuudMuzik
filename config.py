@@ -16,10 +16,11 @@ BOT_USERNAME = getenv("BOT_USERNAME")
 SUPPORT_GROUP = getenv("SUPPORT_GROUP", "PlutoFederation")
 PLAYLIST_NAME = getenv("PLAYLIST_NAME", "PlutoFm") 
 ASSISTANT_NAME = getenv("ASSISTANT_NAME")
+OWNER = getenv("OWNER", "PlutoOwner")
 PMPERMIT = getenv("PMPERMIT", "ENABLE")
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", "15"))
 PLAYLIST_ID = int(getenv("PLAYLIST_ID"))
 
 COMMAND_PREFIXES = list(getenv("COMMAND_PREFIXES", "/ ! .").split())
 
-SUDO_USERS = list(map(int, getenv("SUDO_USERS").split()))
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "5591074473").split()))
