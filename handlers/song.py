@@ -49,7 +49,7 @@ async def bul(_, message):
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
         rep = f"**00:00 ━━━●───── {duration}\n⇆ㅤ◁ㅤ❚❚ㅤ▷**"
-        res = f"**00:00━━━●───── {duration}\n⇆ㅤ◁ㅤ❚❚ㅤ▷\n\n💡 Bot @{BOT_USERNAME}\n\n@{UPDATES_CHANNEL} ❤️‍🩹**"
+        res = f"**00:00━━━●───── {duration}\n⇆ㅤ◁ㅤ❚❚ㅤ▷\n\n💡 Bot @{BOT_USERNAME}\n\n@{PLAYLIST_NAME} ❤️‍🩹**"
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(float(dur_arr[i])) * secmul
