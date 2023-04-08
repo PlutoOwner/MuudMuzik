@@ -24,7 +24,7 @@ ydl_opts = {
   
 #music indirme#
 
-@bot.on_message(filters.command("bul") & ~filters.edited)
+@bot.on_message(filters.command(["bul", "song"]) & ~filters.edited)
 async def bul(_, message):
     query = " ".join(message.command[1:])
     m = await message.reply("<b>Şarkınız Aranıyor ... 🔍</b>")
@@ -70,8 +70,9 @@ async def bul(_, message):
         print(e)
 
 
+
 @bot.on_message(
-    command(["vbul", "vsong"]) & ~filters.edited
+    filters.command(["video", "vsong"]) & ~filters.edited
 )
 async def vsong(client, message):
     ydl_opts = {
