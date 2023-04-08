@@ -7,7 +7,7 @@ from config import (
     BOT_USERNAME,
     SUPPORT_GROUP,
     PLAYLIST_NAME,
-    SUDO_USERS,
+    OWNER,
 )
 
 
@@ -40,7 +40,7 @@ async def start(_, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👤 Owner", user_id=SUDO_USERS
+                        "👤 Owner", url=f"https://t.me/{OWNER}"
                     )
                 ]
                 
@@ -164,7 +164,7 @@ async def cbstart(_, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton(
-                        "👤 Owner", user_id=SUDO_USERS
+                        "👤 Owner", url=f"https://t.me/{OWNER}"
                     )
                 ]
                 
