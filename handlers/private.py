@@ -11,7 +11,6 @@ from config import (
     BOT_USERNAME,
     SUPPORT_GROUP,
     PLAYLIST_NAME,
-    START_IMAGE, 
     SUDO_USERS,
 )
 from helpers.filters import command, other_filters2
@@ -21,7 +20,7 @@ from helpers.filters import command, other_filters2
 @Client.on_message(filters.private & filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
 async def start(_, message: Message):
                 await message.reply_photo(
-                f"{START_IMAGE}",
+                "https://graph.org/file/fa5ccd7123f36f9e12592.jpg",
                 caption=(f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\nSesli sohbetlerde müzik çalabilen botum.\n\nBan yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**"""),
          reply_markup=InlineKeyboardMarkup(
             [
