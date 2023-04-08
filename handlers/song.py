@@ -1,7 +1,6 @@
 import wget
 import os, youtube_dl, requests, time
 
-from main import bot
 from youtube_search import YoutubeSearch
 
 from pyrogram.handlers import MessageHandler
@@ -24,7 +23,7 @@ ydl_opts = {
   
 #music indirme#
 
-@bot.on_message(filters.command(["bul", "song"]) & ~filters.edited)
+@Client.on_message(filters.command(["bul", "song"]) & ~filters.edited)
 async def bul(_, message):
     query = " ".join(message.command[1:])
     m = await message.reply("<b>Şarkınız Aranıyor ... 🔍</b>")
@@ -58,7 +57,7 @@ async def bul(_, message):
         await m.edit("📤 Yükleniyor..")
         await message.reply_audio(audio_file, caption=rep, parse_mode='md',quote=False, title=title, duration=dur, thumb=thumb_name, performer="@PlutoFm", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("🎧 𝐌𝐮̈𝐳𝐢𝐤 𝐊𝐚𝐧𝐚𝐥ı", url=f"https://t.me/{PLAYLIST_NAME}")]]))
         await m.delete()
-        await bot.send_audio(chat_id=PLAYLIST_ID, audio=audio_file, caption=res, performer="@PlutoFm", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
+        await _.send_audio(chat_id=PLAYLIST_ID, audio=audio_file, caption=res, performer="@PlutoFm", parse_mode='md', title=title, duration=dur, thumb=thumb_name)
     except Exception as e:
         await m.edit("<b>❌ Hatanın, düzelmesini bekleyiniz.</b>")
         print(e)
@@ -71,7 +70,7 @@ async def bul(_, message):
 
 
 
-@bot.on_message(
+@Client.on_message(
     filters.command(["video", "vsong"]) & ~filters.edited
 )
 async def vsong(client, message):
