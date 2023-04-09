@@ -10,7 +10,7 @@ from config import BOT_NAME, BOT_USERNAME, SUPPORT_GROUP, PLAYLIST_NAME, OWNER
 @Client.on_message(filters.private & filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
 async def start(_, message: Message):
     await message.reply_text(f"""**Merhaba {message.from_user.mention} 🎵\nBen {BOT_NAME}!\nSesli sohbetlerde müzik çalabilen botum.\n\nBan yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**""",
-      reply_markup=InlineKeyboardMarkup(
+         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
