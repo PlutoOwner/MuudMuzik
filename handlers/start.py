@@ -2,13 +2,8 @@ from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from helpers.filters import command, other_filters2
 
-from config import (
-    BOT_NAME,
-    BOT_USERNAME,
-    SUPPORT_GROUP,
-    PLAYLIST_NAME,
-    OWNER,
-)
+from config import BOT_NAME, BOT_USERNAME, SUPPORT_GROUP, PLAYLIST_NAME, OWNER
+
 
 
 
@@ -170,16 +165,5 @@ async def cbstart(_, query: CallbackQuery):
         ), 
     ) 
      
-
-
-
-
-
-@Client.on_message(command(["ping", f"ping@{BOT_USERNAME}"]) & ~filters.edited)
-async def ping_pong(client: Client, message: Message):
-    start = time()
-    m_reply = await message.reply_text("pinging...")
-    delta_ping = time() - start
-    await m_reply.edit_text("🏓 `PONG!!`\n" f"⚡️ `{delta_ping * 1000:.3f} ms`")
 
 
