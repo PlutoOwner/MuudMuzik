@@ -44,7 +44,7 @@ async def start(_, message: Message):
                 
            ]
         ), 
-    ) 
+    
     
   
 @Client.on_message(filters.command("start") & ~filters.private & ~filters.channel)
@@ -138,7 +138,7 @@ async def ghelp(_, message: Message):
 
 @Client.on_callback_query(filters.regex("cbstart"))
 async def cbstart(_, query: CallbackQuery):
-    await query.edit_message_text(f"""● **Merhaba {query.from_user.mention} 🎵\nBen {BOT_NAME}!\n\n● Sesli sohbetlerde müzik çalabilen botum.\n\n● Ban yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**""",
+    await query.edit_message_text(f"""● **Merhaba {query.from_user.mention} 🎵\nBen {BOT_NAME}!\n\n● Sesli sohbetlerde müzik çalabilen botum.\n\n● Ban yetkisiz, Ses yönetimi yetkisi verip, Asistanı gruba ekleyiniz.**"""),
          reply_markup=InlineKeyboardMarkup(
             [
                 [
@@ -168,7 +168,7 @@ async def cbstart(_, query: CallbackQuery):
                 
            ]
         ), 
-    ) 
+     
 
 
 
