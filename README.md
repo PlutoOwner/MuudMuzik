@@ -8,7 +8,7 @@
 
 <h3>Sürümler 🧸</h3>
 
-- pyrogram version 0.9.0 
+- pyrogram version 1.4.12 
 
 
 
