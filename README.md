@@ -32,7 +32,6 @@
 - `/ayril` - Müzik asistanı grubunuzu terk eder. 
 
 #### Railway Deploy
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/LiKZiv)
 
 
 Get pyrogram (p)  `SESSION` buradan:
